@@ -2,7 +2,7 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.194.0/containers/cpp
 {
 	"name": "C",
-	"workspaceFolder": "/workspace",
+	// "workspaceFolder": "/workspace",
 	"build": {
 		"dockerfile": "Dockerfile",
 		// Update 'VARIANT' to pick an Debian / Ubuntu OS version: debian-11, debian-10, debian-9, ubuntu-20.04, ubuntu-18.04
