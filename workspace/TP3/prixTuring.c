@@ -51,15 +51,31 @@ int scanLineAsInt()
 	return buf;
 }
 
+struct Winner
+{
+	int year;
+	char *name;
+	char *description;
+};
+
+void readWinners(int nbGagnants)
+{
+	for (int i = 0; i < nbGagnants; i++)
+	{
+		int year = scanLineAsInt();
+		printf("%d \n", year);
+		char *name = scanLine();
+		printf("%s \n", name);
+		char *description = scanLine();
+		printf("%s \n", description);
+	}
+}
+
 int main(void)
 {
 
 	int nbGagnants = scanLineAsInt();
-	printf(nbGagnants);
-	for (int i = 0; i < 3 * nbGagnants; i++)
-	{
-		printf("%s \n", scanLine());
-	}
-
+	printf("%d \n", nbGagnants);
+	readWinners(nbGagnants);
 	return EXIT_SUCCESS;
 }
