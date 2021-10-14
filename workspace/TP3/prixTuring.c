@@ -63,21 +63,26 @@ void readWinners(int nbGagnants, struct Winner winners[50])
 	for (int i = 0; i < nbGagnants; i++)
 	{
 		int year = scanLineAsInt();
-		printf("%d \n", year);
+		// printf("%d \n", year);
 		winners[i].year = year;
 		char *name = scanLine();
-		printf("%s \n", name);
+		// printf("%s \n", name);
 		winners[i].name = name;
 		char *description = scanLine();
-		printf("%s \n", description);
+		// printf("%s \n", description);
 		winners[i].description = description;
 	}
 }
 
-// void printWinners()
-// {
-// 	return;
-// }
+void printWinners(int nbGagnants, struct Winner winners[50])
+{
+	for (int i = 0; i < nbGagnants; i++)
+	{
+		printf("%d \n", winners[i].year);
+		printf("%s \n", winners[i].name);
+		printf("%s \n", winners[i].description);
+	}
+}
 
 int main(void)
 {
@@ -89,5 +94,6 @@ int main(void)
 	struct Winner winners[50];
 
 	readWinners(nbGagnants, winners);
+	printWinners(nbGagnants, winners);
 	return EXIT_SUCCESS;
 }
