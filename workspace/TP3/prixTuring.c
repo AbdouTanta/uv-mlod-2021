@@ -84,16 +84,31 @@ void printWinners(int nbGagnants, struct Winner winners[50])
 	}
 }
 
+void infosAnnee(int annee, struct Winner winners[50])
+{
+	for (int i = 0; i < 50; i++)
+	{
+		if (winners[i].year == annee)
+		{
+			printf("L'année %d, le(s) gagnant(s) ont été : %s \nNature des travaux : %s \n", winners[i].year, winners[i].name, winners[i].description);
+			return;
+		}
+	}
+}
+
 int main(void)
 {
 	// print the number of winners
 	int nbGagnants = scanLineAsInt();
-	printf("%d \n", nbGagnants);
+	// printf("%d \n", nbGagnants);
 
 	// array of winners
 	struct Winner winners[50];
 
 	readWinners(nbGagnants, winners);
-	printWinners(nbGagnants, winners);
+	// printWinners(nbGagnants, winners);
+
+	infosAnnee(2003, winners);
+
 	return EXIT_SUCCESS;
 }
