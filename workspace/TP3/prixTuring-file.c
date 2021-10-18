@@ -62,6 +62,10 @@ void infosAnnee(int annee, struct Winner winners[50])
     }
 }
 
+void sortTuringWinnersByYear()
+{
+}
+
 int main(void)
 {
     // print the number of winners
@@ -77,7 +81,7 @@ int main(void)
     FILE *f;
     f = fopen(fileName, "r");
 
-    for (int i = 0; i < 3 * 50 + 1; i++)
+    for (int i = 1; i < 3 * 50 + 1; i++)
     {
         fgets(line, 255, f);
         printf("%s", line);

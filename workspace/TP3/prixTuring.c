@@ -58,7 +58,7 @@ struct Winner
 	char *description;
 };
 
-void readWinners(int nbGagnants, struct Winner winners[50])
+void readWinners(int nbGagnants, struct Winner winners[])
 {
 	for (int i = 0; i < nbGagnants; i++)
 	{
@@ -74,7 +74,7 @@ void readWinners(int nbGagnants, struct Winner winners[50])
 	}
 }
 
-void printWinners(int nbGagnants, struct Winner winners[50])
+void printWinners(int nbGagnants, struct Winner winners[])
 {
 	for (int i = 0; i < nbGagnants; i++)
 	{
@@ -84,7 +84,7 @@ void printWinners(int nbGagnants, struct Winner winners[50])
 	}
 }
 
-void infosAnnee(int annee, struct Winner winners[50])
+void infosAnnee(int annee, struct Winner winners[])
 {
 	for (int i = 0; i < 50; i++)
 	{
@@ -96,10 +96,10 @@ void infosAnnee(int annee, struct Winner winners[50])
 	}
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	// print the number of winners
-	int nbGagnants = scanLineAsInt();
+	int nbGagnants = *argv[0];
 	// printf("%d \n", nbGagnants);
 
 	// array of winners
