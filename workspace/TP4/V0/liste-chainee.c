@@ -59,36 +59,44 @@ void afficheListe_i(Liste l)
 // version recursive
 void afficheListe_r(Liste l)
 {
-	return TODO;
+	if (!estVide(l))
+	{
+		afficheElement(l->val);
+		afficheListe_r(l->suiv);
+	}
+	else
+	{
+		printf("\n");
+	}
 }
 
 void detruireElement(Element e)
 {
 	return TODO;
 }
-
 // Détruit tous les éléments de la liste l
 // version itérative
 void detruire_i(Liste l)
 {
-	Liste p = l;
-	if (!estVide(p))
+	Liste p;
+	while (!estVide(l))
 	{
-		while (p->suiv != NULL)
-		{
-			Liste m = p;
-			p = p->suiv;
-			free(m);
-		}
-		l->suiv = NULL;
-		free(l);
+		p = l;
+		l = l->suiv;
+		detruireElement(p->val);
+		free(p);
 	}
 }
 
 // version récursive
 void detruire_r(Liste l)
 {
-	TODO;
+	if (!estVide(l))
+	{
+		detruire_r(l->suiv);
+		detruireElement(l->val);
+		free(l);
+	}
 }
 
 // retourne la liste dans laquelle l'élément v a été ajouté en fin
@@ -98,7 +106,7 @@ Liste ajoutFin_i(Element v, Liste l)
 	Liste m = l;
 	if (!estVide(m))
 	{
-		while (m->suiv != NULL)
+		while (!estVide(m->suiv))
 		{
 			m = m->suiv;
 		}
@@ -114,7 +122,15 @@ Liste ajoutFin_i(Element v, Liste l)
 // version recursive
 Liste ajoutFin_r(Element v, Liste l)
 {
-	return TODO;
+	if (estVide(l))
+	{
+		return creer(v);
+	}
+	else
+	{
+		l->suiv = ajoutFin_r(v, l->suiv);
+	}
+	return l;
 }
 
 // compare deux elements
@@ -127,28 +143,24 @@ bool equalsElement(Element e1, Element e2)
 // version itérative
 Liste cherche_i(Element v, Liste l)
 {
-	Liste m = l;
-	if (!estVide(l))
+	while (!estVide(l) && !equalsElement(v, l->val))
 	{
-		while (m->val != v && m->suiv != NULL)
-		{
-			m = m->suiv;
-		}
-		if (m->val == v)
-		{
-			return m;
-		}
-		else
-		{
-			return NULL;
-		}
+		l = l->suiv;
 	}
+	return l;
 }
 
 // version récursive
 Liste cherche_r(Element v, Liste l)
 {
-	return TODO;
+	if (!estVide(l) && !equalsElement(v, l->val))
+	{
+		cherche_r(v, l->suiv);
+	}
+	else
+	{
+		return l;
+	}
 }
 
 // Retourne la liste modifiée dans la laquelle le premier élément ayant la valeur v a été supprimé
@@ -156,13 +168,52 @@ Liste cherche_r(Element v, Liste l)
 // version itérative
 Liste retirePremier_i(Element v, Liste l)
 {
-	return TODO;
+	Liste precedent, p;
+	if (estVide(l))
+		return l;
+
+	if (equalsElement(l->val, v))
+	{
+		p = l->suiv;
+		l->suiv = NULL;
+		detruire_r(l);
+		return p;
+	}
+
+	precedent = l;
+	p = l->suiv;
+
+	while (!estVide(p) && !equalsElement(p->val, v))
+	{
+		precedent = p;
+		p = p->suiv;
+	}
+	if (!estVide(p))
+	{
+		precedent->suiv = p->suiv;
+		p->suiv = NULL;
+		detruire_r(p);
+	}
+	return l;
 }
 
 // version recursive
 Liste retirePremier_r(Element v, Liste l)
 {
-	return TODO;
+	if (estVide(l))
+	{
+		return l;
+	}
+
+	if (equalsElement(l->val, v))
+	{
+		Liste p = l;
+		l->suiv = NULL;
+		detruire_r(l);
+		return p;
+	}
+	l->suiv = retirePremier_r(v, l->suiv);
+	return l;
 }
 
 void afficheEnvers_r(Liste l)
