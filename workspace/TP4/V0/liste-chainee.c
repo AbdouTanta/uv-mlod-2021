@@ -13,21 +13,18 @@ bool estVide(Liste l)
 // créer une liste d'un seul élément contenant la valeur v
 Liste creer(Element v)
 {
-	Liste liste;
-	liste->val = v;
-	return liste;
+	Liste l = (Liste)malloc(sizeof(Cellule));
+	l->val = v;
+	l->suiv = NULL;
+	return l;
 }
 
 // ajoute l'élément v en tete de la liste l
 Liste ajoutTete(Element v, Liste l)
 {
-	Cellule *tete = l->suiv;
-	while (tete->suiv != NULL)
-	{
-		tete = tete->suiv;
-	}
-	tete->val = v;
-	return l;
+	Liste n = creer(v);
+	n->suiv = l;
+	return n;
 }
 
 void afficheElement(Element e)
@@ -42,22 +39,50 @@ void afficheElement(Element e)
 // version itérative
 void afficheListe_i(Liste l)
 {
-	TODO;
+	Liste p = l;
+	if (!estVide(p))
+	{
+		printf("Liste ===>  ");
+		while (!estVide(p))
+		{
+			afficheElement(p->val);
+			p = p->suiv;
+		};
+		printf("\n");
+	}
+	else
+	{
+		printf("Liste vide!\n");
+	}
 }
 
 // version recursive
 void afficheListe_r(Liste l)
 {
-	TODO;
+	return TODO;
 }
 
-void detruireElement(Element e) {}
+void detruireElement(Element e)
+{
+	return TODO;
+}
 
 // Détruit tous les éléments de la liste l
 // version itérative
 void detruire_i(Liste l)
 {
-	TODO;
+	Liste p = l;
+	if (!estVide(p))
+	{
+		while (p->suiv != NULL)
+		{
+			Liste m = p;
+			p = p->suiv;
+			free(m);
+		}
+		l->suiv = NULL;
+		free(l);
+	}
 }
 
 // version récursive
@@ -70,7 +95,20 @@ void detruire_r(Liste l)
 // version itérative
 Liste ajoutFin_i(Element v, Liste l)
 {
-	return TODO;
+	Liste m = l;
+	if (!estVide(m))
+	{
+		while (m->suiv != NULL)
+		{
+			m = m->suiv;
+		}
+		m->suiv = creer(v);
+	}
+	else
+	{
+		l = creer(v);
+	}
+	return l;
 }
 
 // version recursive
@@ -89,7 +127,22 @@ bool equalsElement(Element e1, Element e2)
 // version itérative
 Liste cherche_i(Element v, Liste l)
 {
-	return TODO;
+	Liste m = l;
+	if (!estVide(l))
+	{
+		while (m->val != v && m->suiv != NULL)
+		{
+			m = m->suiv;
+		}
+		if (m->val == v)
+		{
+			return m;
+		}
+		else
+		{
+			return NULL;
+		}
+	}
 }
 
 // version récursive

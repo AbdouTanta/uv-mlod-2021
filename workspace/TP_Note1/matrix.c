@@ -7,6 +7,7 @@ struct Matrix
     float array[];
 };
 
+// nope
 typedef struct Matrix MatrixArray[];
 
 MatrixArray *readMatrixArray()
@@ -72,12 +73,6 @@ void printAll(int nombreMatrices, MatrixArray matrixArray)
 
 int main(void)
 {
-
-    // char fileName[] = "matrices.txt";
-    // char *line;
-    // FILE *f;
-    // f = fopen(fileName, "r");
-
     int nombreMatrices;
     scanf("%d", nombreMatrices);
 

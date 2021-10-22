@@ -1,17 +1,19 @@
+// pour eviter les circularites
 #pragma once
 
 #include <stdbool.h>
 
 typedef int Element;
 
-struct cellule_s {
+struct cellule_s
+{
 	Element val;
-	struct cellule_s* suiv;
+	struct cellule_s *suiv;
 };
 
 typedef struct cellule_s Cellule;
 
-typedef Cellule* Liste;
+typedef Cellule *Liste;
 
 // retourne vrai si l est vide et faux sinon
 bool estVide(Liste l);
@@ -52,10 +54,10 @@ Liste ajoutFin_r(Element v, Liste l);
 
 // Retourne un pointeur sur l'élément de la liste l contenant la valeur v ou NULL
 // version itérative
-Liste cherche_i(Element v,Liste l);
+Liste cherche_i(Element v, Liste l);
 
 // version récursive
-Liste cherche_r(Element v,Liste l);
+Liste cherche_r(Element v, Liste l);
 
 // Retourne la liste modifiée dans la laquelle le premier élément ayant la valeur v a été supprimé
 // ne fait rien si aucun élément possède cette valeur
@@ -64,6 +66,5 @@ Liste retirePremier_i(Element v, Liste l);
 
 // version recursive
 Liste retirePremier_r(Element v, Liste l);
-
 
 void afficheEnvers_r(Liste l);
