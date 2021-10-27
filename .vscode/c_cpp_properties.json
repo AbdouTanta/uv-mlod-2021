@@ -3,7 +3,8 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/workspace/TP4/V2"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
