@@ -35,6 +35,30 @@ Liste ajoutTete(Element v, Liste l)
     return res;
 }
 
+//Liste trierListe(Liste l)
+// {
+//     Liste temp, p;
+//     int min;
+
+//     if (!estVide(l))
+//     {
+//         for (temp = l; !estVide(temp->suiv); temp = temp->suiv)
+//         {
+//             for (p = temp->suiv; !estVide(p); p = p->suiv)
+//             {
+//                 if (p->suiv->val.year < temp->val.year)
+//                 {
+//                     min = p->val.year;
+//                     p->val.year = temp->val.year;
+//                     temp->val.year = min;
+//                 }
+//             }
+//         }
+//     }
+
+//     return l;
+// }
+
 void afficheElement(Element e)
 {
     printf("%s,", e.name);
