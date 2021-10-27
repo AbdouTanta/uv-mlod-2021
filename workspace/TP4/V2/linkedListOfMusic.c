@@ -13,7 +13,8 @@ void detruireElement(Element e){};
 
 bool equalsElement(Element a, Element b)
 {
-    return true;
+
+    return !strcmp(a.album, b.album) && !strcmp(a.artist, b.artist) && (a.discNumber == b.discNumber) && !strcmp(a.genre, b.genre) && (a.year == b.year) && (a.trackNumber == b.trackNumber) && (a.discNumber == b.discNumber);
 }
 
 // créer une liste d'un seul élément contenant la valeur v
