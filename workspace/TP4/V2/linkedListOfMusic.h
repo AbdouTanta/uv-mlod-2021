@@ -36,6 +36,8 @@ void afficheElement(Element e);
 void detruireElement(Element e);
 bool equalsElement(Element e1, Element e2);
 
+// Liste trierListe(Liste l);
+
 // retourne vrai si l est vide et faux sinon
 bool estVide(Liste l);
 

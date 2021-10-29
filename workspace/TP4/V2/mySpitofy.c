@@ -48,6 +48,10 @@ int main()
 
     // afficher la liste de music
     afficheListe_r(musicList);
+    
+    // afficher liste triée
+    // musicList = trierListe(musicList);
+    // afficheListe_r(musicList);
 
     fclose(f);
 

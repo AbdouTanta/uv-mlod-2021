@@ -13,7 +13,8 @@ void detruireElement(Element e){};
 
 bool equalsElement(Element a, Element b)
 {
-    return true;
+
+    return !strcmp(a.album, b.album) && !strcmp(a.artist, b.artist) && (a.discNumber == b.discNumber) && !strcmp(a.genre, b.genre) && (a.year == b.year) && (a.trackNumber == b.trackNumber) && (a.discNumber == b.discNumber);
 }
 
 // créer une liste d'un seul élément contenant la valeur v
@@ -33,6 +34,30 @@ Liste ajoutTete(Element v, Liste l)
     res->suiv = l;
     return res;
 }
+
+//Liste trierListe(Liste l)
+// {
+//     Liste temp, p;
+//     int min;
+
+//     if (!estVide(l))
+//     {
+//         for (temp = l; !estVide(temp->suiv); temp = temp->suiv)
+//         {
+//             for (p = temp->suiv; !estVide(p); p = p->suiv)
+//             {
+//                 if (p->suiv->val.year < temp->val.year)
+//                 {
+//                     min = p->val.year;
+//                     p->val.year = temp->val.year;
+//                     temp->val.year = min;
+//                 }
+//             }
+//         }
+//     }
+
+//     return l;
+// }
 
 void afficheElement(Element e)
 {
