@@ -29,46 +29,6 @@ ArbreBinaire creer(Element e)
 // version itérative
 ArbreBinaire insere_i(ArbreBinaire a, Element e)
 {
-	ArbreBinaire b = a;
-
-	// cherche si a existe deja ici
-
-	if (!estVide(b))
-	{
-		while (b->val != a)
-		{
-			if (b > b->val)
-			{
-				if (!estVide(b->filsDroit))
-				{
-					initialiser(b->filsDroit);
-					b->filsDroit = creer(e);
-				}
-				else
-				{
-					b = b->filsDroit;
-				}
-			}
-			else
-			{
-				if (!estVide(b->filsGauche))
-				{
-					initialiser(b->filsGauche);
-					b->filsGauche = creer(e);
-				}
-				else
-				{
-					b = b->filsGauche;
-				}
-			}
-		}
-	}
-	else
-	{
-		b = creer(e);
-	}
-
-	return b;
 }
 
 // insere e dans a sachant que a est un arbre binaire de recherche
@@ -117,28 +77,42 @@ int profondeur(ArbreBinaire a, Element e)
 {
 	ArbreBinaire b = a;
 	int profondeur = 0;
-	if (!estVide(b))
+	while (!estVide(b))
 	{
-		while (!estVide(b) && (b->val != e))
+		if (e > b->val)
 		{
-			if (e > b->val)
-			{
-				b = b->filsDroit;
-			}
-			else
-			{
-				b = b->filsGauche;
-			}
-			profondeur = profondeur + 1;
+			b = b->filsDroit;
 		}
+		if (e < b->val)
+		{
+			b = b->filsGauche;
+		}
+		if (e == b->val)
+		{
+			return profondeur + 1;
+		}
+		profondeur = profondeur + 1;
 	}
-	return profondeur;
+
+	return -1;
 }
 
 // retourne la hauteur de l'arbre a
 int hauteur(ArbreBinaire a)
 {
-	return 0;
+	if (!estVide(a))
+	{
+		int hauteurG = hauteur(a->filsGauche);
+		int hauteurD = hauteur(a->filsDroit);
+		if (hauteurG >= hauteurD)
+			return hauteurG + 1;
+		else
+			return hauteurD + 1;
+	}
+	else
+	{
+		return 0;
+	};
 }
 
 // retourne le pere de elem dans l'arbre a ou NULL s'il n'existe pas
@@ -153,7 +127,6 @@ void afficheRGD_r(ArbreBinaire a)
 	if (!estVide(a))
 	{
 		printf("%d ", a->val);
-
 		afficheRGD_r(a->filsGauche);
 		afficheRGD_r(a->filsDroit);
 	}
@@ -163,10 +136,9 @@ void afficheGRD_r(ArbreBinaire a)
 {
 	if (!estVide(a))
 	{
-		printf("%d ", a->val);
-
-		afficheGRD_r(a->filsDroit);
 		afficheGRD_r(a->filsGauche);
+		printf("%d ", a->val);
+		afficheGRD_r(a->filsDroit);
 	}
 }
 
@@ -174,10 +146,9 @@ void afficheGDR_r(ArbreBinaire a)
 {
 	if (!estVide(a))
 	{
-
+		afficheGDR_r(a->filsGauche);
 		afficheGDR_r(a->filsDroit);
 		printf("%d ", a->val);
-		afficheGDR_r(a->filsGauche);
 	}
 }
 
@@ -185,14 +156,26 @@ void afficheGDR_r(ArbreBinaire a)
 // Suppose que a est un arbre binaire de recherche sans doublons
 ArbreBinaire min(ArbreBinaire a)
 {
-	return NULL;
+	ArbreBinaire p = a;
+	while (!estVide(a))
+	{
+		p = a;
+		a = a->filsGauche;
+	}
+	return p;
 }
 
 // retourne le noeud dont la valeur est maximum dans l'arbre
 // Suppose que a est un arbre binaire de recherche sans doublons
 ArbreBinaire max(ArbreBinaire a)
 {
-	return NULL;
+	ArbreBinaire p = a;
+	while (!estVide(a))
+	{
+		p = a;
+		a = a->filsDroit;
+	}
+	return p;
 }
 
 // retourne l'arbre dont la valeur de la racine est elem et NULL si elem n'existe dans a
@@ -226,4 +209,14 @@ ArbreBinaire supprimer_r(ArbreBinaire a, Element x)
 
 void detruire_r(ArbreBinaire a)
 {
+	if (estVide(a))
+	{
+		return;
+	}
+	else
+	{
+		detruire_r(a->filsDroit);
+		detruire_r(a->filsGauche);
+		free(a);
+	}
 }

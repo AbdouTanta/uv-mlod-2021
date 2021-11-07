@@ -44,6 +44,8 @@ int main(void)
 	afficheGRD_r(a);
 	printf("\n");
 	printf("nombreDeNoeud(a)= %i\n", nombreDeNoeud(a));
+	printf("min(a)= %i\n", min(a)->val);
+	printf("max(a)= %i\n", max(a)->val);
 
 	// 	a = supprimer_r(a,6);
 	// 	afficheGRD_r(a);printf("\n");
@@ -58,7 +60,7 @@ int main(void)
 	printf("profondeur 3 = %i\n", profondeur(a, 3));
 	printf("profondeur 7 = %i\n", profondeur(a, 7));
 	printf("profondeur NULL = %i\n", profondeur(NULL, 5));
-	printf("profondeur 18 = %i\n", profondeur(a, 18));
+	printf("profondeur 8 = %i\n", profondeur(a, 8));
 	//
 	//
 	// p=pere(NULL,5);
