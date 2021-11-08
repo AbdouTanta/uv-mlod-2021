@@ -29,6 +29,37 @@ ArbreBinaire creer(Element e)
 // version itérative
 ArbreBinaire insere_i(ArbreBinaire a, Element e)
 {
+	ArbreBinaire init = a;
+	if (estVide(a))
+		return creer(e);
+	else
+	{
+		while (!estVide(a))
+		{
+			ArbreBinaire p = a;
+			if (a->val == e)
+			{
+				return init;
+			}
+			if (e > a->val)
+			{
+				a = a->filsDroit;
+				if (estVide(a))
+				{
+					p->filsDroit = creer(e);
+				}
+			}
+			else
+			{
+				a = a->filsGauche;
+				if (estVide(a))
+				{
+					p->filsGauche = creer(e);
+				}
+			}
+		}
+	}
+	return init;
 }
 
 // insere e dans a sachant que a est un arbre binaire de recherche
@@ -83,11 +114,11 @@ int profondeur(ArbreBinaire a, Element e)
 		{
 			b = b->filsDroit;
 		}
-		if (e < b->val)
+		else if (e < b->val)
 		{
 			b = b->filsGauche;
 		}
-		if (e == b->val)
+		else if (e == b->val)
 		{
 			return profondeur + 1;
 		}
@@ -118,8 +149,34 @@ int hauteur(ArbreBinaire a)
 // retourne le pere de elem dans l'arbre a ou NULL s'il n'existe pas
 ArbreBinaire pere(ArbreBinaire a, Element elem)
 {
-
-	return NULL;
+	if (estVide(a))
+	{
+		return NULL;
+	}
+	else
+	{
+		ArbreBinaire pere = a;
+		while (!estVide(a) && (a->val != elem))
+		{
+			pere = a;
+			if (elem > a->val)
+			{
+				a = a->filsDroit;
+			}
+			else
+			{
+				a = a->filsGauche;
+			}
+		}
+		if (estVide(a))
+		{
+			return NULL;
+		}
+		else
+		{
+			return pere;
+		}
+	}
 }
 
 void afficheRGD_r(ArbreBinaire a)

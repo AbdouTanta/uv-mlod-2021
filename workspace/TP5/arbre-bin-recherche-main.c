@@ -6,7 +6,7 @@
 
 int main(void)
 {
-	ArbreBinaire a; //,p;
+	ArbreBinaire a, p;
 
 	printf("estVide(a)= %s\n", estVide(a) ? "TRUE" : "FALSE");
 	initialiser(&a);
@@ -63,25 +63,25 @@ int main(void)
 	printf("profondeur 8 = %i\n", profondeur(a, 8));
 	//
 	//
-	// p=pere(NULL,5);
-	// printf("pere(NULL,5) = %i\n",p==NULL?-1:p->val);
-	// p=pere(a,18);
-	// printf("pere(18) = %i\n",p==NULL?-1:p->val);
-	// p=pere(a,5);
-	// printf("pere(5) = %i\n",p==NULL?-1:p->val);
-	// p=pere(a,8);
-	// printf("pere(8) = %i\n",p==NULL?-1:p->val);
-	// p=pere(a,3);
-	// printf("pere(3) = %i\n",p==NULL?-1:p->val);
+	p = pere(NULL, 5);
+	printf("pere(NULL,5) = %i\n", p == NULL ? -1 : p->val);
+	p = pere(a, 18);
+	printf("pere(18) = %i\n", p == NULL ? -1 : p->val);
+	p = pere(a, 5);
+	printf("pere(5) = %i\n", p == NULL ? -1 : p->val);
+	p = pere(a, 8);
+	printf("pere(8) = %i\n", p == NULL ? -1 : p->val);
+	p = pere(a, 3);
+	printf("pere(3) = %i\n", p == NULL ? -1 : p->val);
 	//
-	// p=recherche_r(a, 18);
-	// printf("recherche(18) = %i\n",p==NULL?-1:p->val);
-	// p=recherche_r(NULL, 3);
-	// printf("recherche(NULL) = %i\n",p==NULL?-1:p->val);
-	// p=recherche_r(a, 3);
-	// printf("recherche(3) = %i\n",p==NULL?-1:p->val);
-	// p=recherche_r(a, 8);
-	// printf("recherche(8) = %i\n",p==NULL?-1:p->val);
+	p = recherche_r(a, 18);
+	printf("recherche(18) = %i\n", p == NULL ? -1 : p->val);
+	p = recherche_r(NULL, 3);
+	printf("recherche(NULL) = %i\n", p == NULL ? -1 : p->val);
+	p = recherche_r(a, 3);
+	printf("recherche(3) = %i\n", p == NULL ? -1 : p->val);
+	p = recherche_r(a, 8);
+	printf("recherche(8) = %i\n", p == NULL ? -1 : p->val);
 	//
 	// a = supprimer_r(a,18);
 	// printf("nombreDeNoeud(a)= %i\n",nombreDeNoeud(a));
